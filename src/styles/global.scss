@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --background: #F0F0F5;
+    --blue: #64b5f6;
+    --cyan: #4dd0e1;
+    --blue-light: #e3f2fd;
+    --cyan-light: #e6f8fb;
+    --text-title: #363F5F;
+    --text-body: #969CB3;
+    --green: #33CC95;
+}
+
 @media (max-width: 1080px) {
     html {
         font-size: 93.75%;
@@ -16,12 +27,20 @@
     }
 }
 
+body {
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-title)
+}
+
 body, input, textarea, select, button {
     font: 400 1rem "Roboto", sans-serif;
 }
 
 button {
     cursor: pointer;
+    border: 0;
+    padding: 0;
 }
 
 a {
