@@ -3,65 +3,112 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-size: cover;
+    background-position: center;
+    background-image: url("/images/background2.jpg");
+
+    img {
+        height: 30rem;
+        margin-bottom: 1rem;
+        animation: appearFromAbove 0.8s;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 10rem;
+        margin-bottom: 1rem;
+        animation: appearFromAbove 0.8s;
+    }
 
     div {
-        overflow: hidden;
+        background: var(--black-op-700);
+        padding: 3rem 7rem;
+        box-shadow: 30px 30px 100px var(--blue-dark);
+        
+        animation: appearFromAbove 2s;
 
         display: flex;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
 
-        background: var(--cyan-light);
-        padding: 1rem;
-
-        > button {
-            background: transparent;
-
-            svg {
-                transform: rotate(0deg);
-                transition: transform 0.5s;
-            }
-
-            &.active {
-                svg {
-                    transform: rotate(180deg);
-                    transition: transform 0.5s;
-                }
-            }
-        }
         form {
-            margin-left: 1rem;
-            border-radius: 0.25rem;
-            background: var(--cyan);
-            padding: 1rem;
-
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
     
             h1 {
                 margin-bottom: 2rem;
             }
     
             input {
-                width: 100%;
-                height: 2rem;
-                border-radius: 0.25rem;
-                border: 1px solid #d7d7d7;
-                background: #e7e9ee;
+                text-align: center;
+                width: calc(100% + 2rem);
+                height: 2.5rem;
+                border-radius: 3rem;
+                border: 2.5px solid var(--blue);
+                background: transparent;
+                color: var(--red);
                 font-weight: 400;
                 font-size: 1rem;
+
+                transition: all 0.2s;
     
                 & + label {
                     margin-top: 1rem;
+                }
+
+                &:focus {
+                    width: calc(100% + 6rem);
+                    border: 2.5px solid var(--green);
+                    box-shadow: 0 0 40px var(--green);
                 }
             }
     
             button {
                 margin-top: 2rem;
-                background: var(--green);
+                background: transparent;
+                color: var(--white);
+                border: 2.5px solid var(--green);
                 height: 3rem;
-                border-radius: 1rem;
+                border-radius: 3rem;
+                align-self: stretch;
+                
+                transition: all 0.2s;
+
+                &:hover {
+                    background: var(--green);
+                    box-shadow: 0 0 40px var(--green);
+                }
             }
         }
+    }
+}
+
+.singnUp {
+    font-weight: bold;
+    margin-top: 3rem;
+
+    a {
+        color: var(--yellow-500);
+        margin-left: 0.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@keyframes appearFromAbove {
+    from {
+        transform: translateY(-1000px);
+    }to {
+        transform: translateY(0);
     }
 }
