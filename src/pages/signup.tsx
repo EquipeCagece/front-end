@@ -17,7 +17,7 @@ export default function Home() {
         <a href="/"><img src="/images/logo.png" alt="Logo" /></a>
         <div>
           <form>
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
 
             <label htmlFor="email">E-mail</label>
             <input type="text" id="email" />
@@ -25,17 +25,14 @@ export default function Home() {
             <label htmlFor="password">Senha</label>
             <input type="password" id="password" />
 
+            <label htmlFor="password">Confirmar Senha</label>
+            <input type="password" id="password" />
+
             <button type="submit">
-              Entrar
+              Sign Up
             </button>
           </form>
 
-          <nav className={styles.singnUp}>
-            Não tem conta?
-            <Link href="/signup">
-              <a>Crie uma imediatamente</a>
-            </Link>
-          </nav>
         </div>
       </div>
     </>

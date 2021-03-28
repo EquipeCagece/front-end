@@ -6,10 +6,9 @@
     justify-content: space-around;
     background-size: cover;
     background-position: center;
-    background-image: url("/images/background2.jpg");
 
     img {
-        height: 30rem;
+        height: 20rem;
         margin-bottom: 1rem;
         animation: appearFromAbove 0.8s;
     }
@@ -26,6 +25,7 @@
     }
 
     div {
+        height: 70%;
         background: var(--black-op-700);
         padding: 3rem 7rem;
         box-shadow: 30px 30px 100px var(--blue-dark);
