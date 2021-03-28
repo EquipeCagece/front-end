@@ -1,20 +1,31 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
 
-import styles from '../styles/pages/home.module.scss'
+import styles from '../styles/pages/home.module.scss';
 
-const myLoader = () => {
-  return Math.floor(Math.random() * 10)
-}
+const myLoader = (): number => {
+  return Math.floor(Math.random() * 10);
+};
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       <Head>
-        <title>PokeTeam | Início</title>
+        <title>PokeTeam | Login</title>
       </Head>
-      <div className={styles.container} style={{ backgroundImage: `url("/images/background_${myLoader()}.jpg")` }}>
-        <a href="/"><img src="/images/logo.png" alt="Logo" /></a>
+      <div
+        className={styles.container}
+        style={{
+          backgroundImage: `url("/images/background_${myLoader()}.jpg")`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+      >
+        <Link href="/">
+          <a>
+            <img src="/images/logo.png" alt="Logo" />
+          </a>
+        </Link>
         <div>
           <form>
             <h1>Login</h1>
@@ -25,12 +36,10 @@ export default function Home() {
             <label htmlFor="password">Senha</label>
             <input type="password" id="password" />
 
-            <button type="submit">
-              Entrar
-            </button>
+            <button type="submit">Entrar</button>
           </form>
 
-          <nav className={styles.singnUp}>
+          <nav className={styles.links}>
             Não tem conta?
             <Link href="/signup">
               <a>Crie uma imediatamente</a>
@@ -39,5 +48,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }

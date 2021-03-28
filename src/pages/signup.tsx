@@ -1,23 +1,37 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
 
-import styles from '../styles/pages/home.module.scss'
+import styles from '../styles/pages/home.module.scss';
 
-const myLoader = () => {
-  return Math.floor(Math.random() * 10)
-}
+const myLoader = (): number => {
+  return Math.floor(Math.random() * 10);
+};
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       <Head>
-        <title>PokeTeam | Início</title>
+        <title>PokeTeam | Cadastro</title>
       </Head>
-      <div className={styles.container} style={{ backgroundImage: `url("/images/background_${myLoader()}.jpg")` }}>
-        <a href="/"><img src="/images/logo.png" alt="Logo" /></a>
+      <div
+        className={styles.container}
+        style={{
+          backgroundImage: `url("/images/background_${myLoader()}.jpg")`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+      >
+        <Link href="/">
+          <a>
+            <img src="/images/logo.png" alt="Logo" />
+          </a>
+        </Link>
         <div>
           <form>
-            <h1>Sign Up</h1>
+            <h1>Cadastro</h1>
+
+            <label htmlFor="name">Nome</label>
+            <input type="text" id="name" />
 
             <label htmlFor="email">E-mail</label>
             <input type="text" id="email" />
@@ -25,16 +39,20 @@ export default function Home() {
             <label htmlFor="password">Senha</label>
             <input type="password" id="password" />
 
-            <label htmlFor="password">Confirmar Senha</label>
-            <input type="password" id="password" />
+            <label htmlFor="password_confirmation">Confirmar Senha</label>
+            <input type="password" id="password_confirmation" />
 
-            <button type="submit">
-              Sign Up
-            </button>
+            <button type="submit">Cadastrar</button>
           </form>
 
+          <nav className={styles.links}>
+            Já possui conta?
+            <Link href="/">
+              <a>Voltar para login</a>
+            </Link>
+          </nav>
         </div>
       </div>
     </>
-  )
+  );
 }
