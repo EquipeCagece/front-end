@@ -7,7 +7,7 @@ const myLoader = (): number => {
   return Math.floor(Math.random() * 10);
 };
 
-export default function Home(): JSX.Element {
+export default function SignUp(): JSX.Element {
   return (
     <>
       <Head>

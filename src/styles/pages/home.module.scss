@@ -1,9 +1,6 @@
 .container {
   height: 100vh;
 
-  background-size: cover;
-  background-position: center;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +14,7 @@
 
   div {
     background: var(--black-op-700);
-    padding: 3rem 7rem;
+    padding: 3rem 10rem;
     box-shadow: 30px 30px 100px var(--blue-dark);
 
     animation: appearFromAbove 2s;

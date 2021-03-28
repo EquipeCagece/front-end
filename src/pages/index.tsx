@@ -42,7 +42,7 @@ export default function Home(): JSX.Element {
           <nav className={styles.links}>
             Não tem conta?
             <Link href="/signup">
-              <a>Crie uma imediatamente</a>
+              <a>Criar conta</a>
             </Link>
           </nav>
         </div>
