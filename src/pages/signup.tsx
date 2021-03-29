@@ -30,17 +30,17 @@ export default function SignUp(): JSX.Element {
           <form>
             <h1>Cadastro</h1>
 
-            <label htmlFor="name">Nome</label>
-            <input type="text" id="name" />
+            <input type="text" id="name" placeholder="Nome" />
 
-            <label htmlFor="email">E-mail</label>
-            <input type="text" id="email" />
+            <input type="text" id="email" placeholder="E-mail" />
 
-            <label htmlFor="password">Senha</label>
-            <input type="password" id="password" />
+            <input type="password" id="password" placeholder="Senha" />
 
-            <label htmlFor="password_confirmation">Confirmar Senha</label>
-            <input type="password" id="password_confirmation" />
+            <input
+              type="password"
+              id="password_confirmation"
+              placeholder="Confirmar Senha"
+            />
 
             <button type="submit">Cadastrar</button>
           </form>
