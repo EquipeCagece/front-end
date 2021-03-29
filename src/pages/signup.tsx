@@ -1,13 +1,29 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 
 import styles from '../styles/pages/home.module.scss';
 
-const myLoader = (): number => {
-  return Math.floor(Math.random() * 10);
-};
+// const myLoader = (): number => {
+//   return Math.floor(Math.random() * 10);
+// };
 
 export default function SignUp(): JSX.Element {
+  const [randomValue, setRandoValue] = useState(0);
+
+  useEffect(() => {
+    setRandoValue(Math.floor(Math.random() * 10));
+  }, []);
+
+  function handleSubmit(event: FormEvent): void {
+    event.preventDefault();
+    console.log('submit');
+  }
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>): void {
+    // To do
+  }
+
   return (
     <>
       <Head>
@@ -16,7 +32,7 @@ export default function SignUp(): JSX.Element {
       <div
         className={styles.container}
         style={{
-          backgroundImage: `url("/images/background_${myLoader()}.jpg")`,
+          backgroundImage: `url("/images/background_${randomValue}.jpg")`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
         }}

@@ -1,13 +1,35 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
 
 import styles from '../styles/pages/home.module.scss';
 
-const myLoader = (): number => {
-  return Math.floor(Math.random() * 10);
-};
+// const myLoader = (): number => {
+//   return Math.floor(Math.random() * 10);
+// };
 
 export default function Home(): JSX.Element {
+  const [randomValue, setRandoValue] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+  });
+
+  useEffect(() => {
+    setRandoValue(Math.floor(Math.random() * 10));
+  }, []);
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>): void {
+    const { name, value } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  }
+
+  function handleSubmit(event: FormEvent): void {
+    event.preventDefault();
+    console.log('submit');
+  }
+
   return (
     <>
       <Head>
@@ -16,7 +38,7 @@ export default function Home(): JSX.Element {
       <div
         className={styles.container}
         style={{
-          backgroundImage: `url("/images/background_${myLoader()}.jpg")`,
+          backgroundImage: `url("/images/background_${randomValue}.jpg")`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
         }}
@@ -27,12 +49,22 @@ export default function Home(): JSX.Element {
           </a>
         </Link>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <h1>Login</h1>
 
-            <input type="text" id="email" placeholder="E-mail" />
+            <input
+              type="text"
+              placeholder="E-mail"
+              name="email"
+              onChange={handleInputChange}
+            />
 
-            <input type="password" id="password" placeholder="Senha" />
+            <input
+              type="password"
+              placeholder="Senha"
+              name="password"
+              onChange={handleInputChange}
+            />
 
             <button type="submit">Entrar</button>
           </form>
