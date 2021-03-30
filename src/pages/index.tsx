@@ -4,10 +4,6 @@ import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
 
 import styles from '../styles/pages/home.module.scss';
 
-// const myLoader = (): number => {
-//   return Math.floor(Math.random() * 10);
-// };
-
 export default function Home(): JSX.Element {
   const [randomValue, setRandoValue] = useState(0);
   const [formData, setFormData] = useState({

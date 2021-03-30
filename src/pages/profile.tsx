@@ -22,16 +22,12 @@ export default function Profile(): JSX.Element {
                 <input type="file" id="avatar" />
               </label>
             </div>
-
+            
             <input type="text" placeholder="Nome" />
 
-            <input type="text" placeholder="E-mail" />
+            <input type="email" placeholder="E-mail" />
 
-            <input type="text" placeholder="Senha atual" />
-
-            <input type="text" placeholder="Nova senha" />
-
-            <input type="text" placeholder="Confirmar senha" />
+            <input type="password" placeholder="Senha atual" />
 
             <button type="submit">Confirmar mudanças</button>
           </form>
