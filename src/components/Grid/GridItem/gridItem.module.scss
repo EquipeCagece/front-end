@@ -1,0 +1,51 @@
+.container {
+  background: var(--black-op-700);
+  border-radius: 1.5rem;
+
+  img {
+    width: 100%;
+    height: 15rem;
+    border-radius: 16px 16px 0 0;
+    border-bottom: 1px solid var(--red);
+  }
+
+  div {
+    background: transparent;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.7rem 0 0.7rem 0;
+    color: var(--text-title);
+
+    p {
+      font-weight: bold;
+    }
+  }
+
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 10px 10px var(--green);
+    cursor: pointer;
+  }
+
+  opacity: 0;
+  animation: appearFromUnderneath 1s linear;
+  animation-fill-mode:forwards;
+  animation-delay: 5s;
+    @for $i from 1 through 21{
+      &:nth-child(#{$i}){
+        animation-delay: $i * 0.1s;
+      }
+    }
+}
+
+@keyframes appearFromUnderneath {
+  from {
+    opacity: 0;
+    top: 100px;
+  }to {
+    opacity: 1;
+    top: 0px;
+  }
+}
