@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import { FiSearch } from 'react-icons/fi';
-import { SideBar } from '../../components/Sidebar';
 
-import styles from '../../styles/pages/pokedex.module.scss';
+import styles from '../../styles/pages/commonStylesGrid.module.scss';
 
 export default function Pokedex(): JSX.Element {
   return (
@@ -12,7 +11,6 @@ export default function Pokedex(): JSX.Element {
       </Head>
 
       <main className={styles.container}>
-        <SideBar />
         <div className={styles.content}>
           <header>
             <input type="text" placeholder="Pesquise um pokemon" />

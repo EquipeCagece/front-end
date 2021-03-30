@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { FiCamera } from 'react-icons/fi';
 import styles from '../styles/pages/profile.module.scss';
-import { SideBar } from '../components/Sidebar';
 
 export default function Profile(): JSX.Element {
   function handleSubmit(): void {
@@ -14,8 +13,6 @@ export default function Profile(): JSX.Element {
         <title>Pokedex | Perfil</title>
       </Head>
       <main className={styles.container}>
-        <SideBar />
-
         <div>
           <form onSubmit={handleSubmit}>
             <div className={styles.avatarInput}>
