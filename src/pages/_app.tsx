@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const { asPath } = useRouter();
   return (
     <>
-      {asPath !== '/' && <SideBar />}
+      {asPath !== '/' && asPath !== 'signup' && <SideBar />}
       <Component {...pageProps} />
     </>
   );

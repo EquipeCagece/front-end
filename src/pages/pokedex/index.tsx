@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import { FiSearch } from 'react-icons/fi';
 
-import styles from '../../styles/pages/commonStylesGrid.module.scss';
+import styles from './pokedex.module.scss';
+
+import { Grid } from '../../components/Grid';
+import { GridItem } from '../../components/Grid/GridItem';
 
 export default function Pokedex(): JSX.Element {
   return (
@@ -19,8 +22,8 @@ export default function Pokedex(): JSX.Element {
             </button>
           </header>
 
-          <section>
-            <div className={styles.card}>
+          <Grid>
+            <GridItem>
               <img
                 src="https://i.pinimg.com/originals/9a/7b/a2/9a7ba23f62d913cc4e0c8e590b50995c.png"
                 alt="pokemon"
@@ -30,9 +33,9 @@ export default function Pokedex(): JSX.Element {
                 <p>001</p>
                 <p>Pikachu</p>
               </div>
-            </div>
+            </GridItem>
 
-            <div className={styles.card}>
+            <GridItem>
               <img
                 src="https://i.pinimg.com/originals/3d/f2/db/3df2dbe82ab0a446ef57bada79b5b277.png"
                 alt="pokemon2"
@@ -42,9 +45,9 @@ export default function Pokedex(): JSX.Element {
                 <p>002</p>
                 <p>Bulbasaur</p>
               </div>
-            </div>
+            </GridItem>
 
-            <div className={styles.card}>
+            <GridItem>
               <img
                 src="https://cdn.ome.lt/P6baw5tdceBOHZXqnqarpF-3buA=/1200x630/smart/extras/conteudos/squirtle.jpeg"
                 alt="pokemon3"
@@ -54,9 +57,9 @@ export default function Pokedex(): JSX.Element {
                 <p>003</p>
                 <p>Squirtle</p>
               </div>
-            </div>
+            </GridItem>
 
-            <div className={styles.card}>
+            <GridItem>
               <img
                 src="https://kanto.legiaodosherois.com.br/w760-h398-gnw-cfill-q80/wp-content/uploads/2020/05/legiao_Ivj8qSxFEQif.jpg.jpeg"
                 alt="pokemon5"
@@ -66,9 +69,9 @@ export default function Pokedex(): JSX.Element {
                 <p>005</p>
                 <p>Charizard</p>
               </div>
-            </div>
+            </GridItem>
 
-            <div className={styles.card}>
+            <GridItem>
               <img
                 src="https://i.pinimg.com/originals/7a/f6/0b/7af60b2b6fa202db54f0aa275fee6e17.png"
                 alt="pokemon4"
@@ -78,9 +81,9 @@ export default function Pokedex(): JSX.Element {
                 <p>004</p>
                 <p>Charmander</p>
               </div>
-            </div>
+            </GridItem>
 
-            <div className={styles.card}>
+            <GridItem>
               <img
                 src="https://d2skuhm0vrry40.cloudfront.net/2017/articles/2017-09-21-12-26/mewtwo.png/EG11/resize/480x-1/quality/75/format/jpg"
                 alt="pokemon6"
@@ -90,8 +93,8 @@ export default function Pokedex(): JSX.Element {
                 <p>007</p>
                 <p>Mewtwo</p>
               </div>
-            </div>
-          </section>
+            </GridItem>
+          </Grid>
         </div>
       </main>
     </>
