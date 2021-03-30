@@ -30,7 +30,11 @@ export default function Pokedex(): JSX.Element {
               />
 
               <div>
-                <p>001</p>
+                <img
+                  className="electric pokemonIcon"
+                  src="../../../types/electric.svg"
+                  alt="electric"
+                />
                 <p>Pikachu</p>
               </div>
             </GridItem>
@@ -42,7 +46,16 @@ export default function Pokedex(): JSX.Element {
               />
 
               <div>
-                <p>002</p>
+                <img
+                  className="grass pokemonIcon"
+                  src="../../../types/grass.svg"
+                  alt="grass"
+                />
+                <img
+                  className="poison pokemonIcon"
+                  src="../../../types/poison.svg"
+                  alt="poison"
+                />
                 <p>Bulbasaur</p>
               </div>
             </GridItem>
@@ -54,7 +67,11 @@ export default function Pokedex(): JSX.Element {
               />
 
               <div>
-                <p>003</p>
+                <img
+                  className="water pokemonIcon"
+                  src="../../../types/water.svg"
+                  alt="water"
+                />
                 <p>Squirtle</p>
               </div>
             </GridItem>
@@ -66,7 +83,17 @@ export default function Pokedex(): JSX.Element {
               />
 
               <div>
-                <p>005</p>
+                <img
+                  className="fire pokemonIcon"
+                  src="../../../types/fire.svg"
+                  alt="fire"
+                />
+
+                <img
+                  className="flying pokemonIcon"
+                  src="../../../types/flying.svg"
+                  alt="flying"
+                />
                 <p>Charizard</p>
               </div>
             </GridItem>
@@ -78,7 +105,11 @@ export default function Pokedex(): JSX.Element {
               />
 
               <div>
-                <p>004</p>
+                <img
+                  className="fire pokemonIcon"
+                  src="../../../types/fire.svg"
+                  alt="fire"
+                />
                 <p>Charmander</p>
               </div>
             </GridItem>
@@ -90,7 +121,11 @@ export default function Pokedex(): JSX.Element {
               />
 
               <div>
-                <p>007</p>
+                <img
+                  className="psychic pokemonIcon"
+                  src="../../../types/psychic.svg"
+                  alt="psychic"
+                />
                 <p>Mewtwo</p>
               </div>
             </GridItem>

@@ -50,3 +50,120 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.pokemonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 3rem;
+}
+
+.electric {
+  background: linear-gradient(180deg, #e6bf00 2%, #FBD100 50%);
+
+  box-shadow: 0 0 7px #FBD100;
+}
+
+.bug {
+  background: linear-gradient(180deg, #78b300 2%, #83C300 50%);
+
+  box-shadow: 0 0 7px #83C300;
+}
+
+.dark {
+  background: linear-gradient(180deg, #575162 2%, #5B5466 50%);
+
+  box-shadow: 0 0 7px #5B5466;
+}
+
+.dragon {
+  background: linear-gradient(180deg, #004680 2%, #006FC9 50%);
+
+  box-shadow: 0 0 7px #006FC9;
+}
+
+.fairy {
+  background: linear-gradient(180deg, #f952e2 2%, #FB89EB 50%);
+
+  box-shadow: 0 0 7px #FB89EB;
+}
+
+.fighting {
+  background: linear-gradient(180deg, #c81e56 2%, #e1376f 50%);
+
+  box-shadow: 0 0 7px #e1376f;
+}
+
+.fire {
+  background: linear-gradient(180deg, #e66800 2%, #FF9741 50%);
+
+  box-shadow: 0 0 7px #FF9741;
+}
+
+.flying {
+  background: linear-gradient(180deg, #2c60b9 2%, #4679d3 50%);
+
+  box-shadow: 0 0 7px #4679d3;
+}
+
+.ghost {
+  background: linear-gradient(180deg, #4560a1 2%, #4C6AB2 50%);
+
+  box-shadow: 0 0 7px #4C6AB2;
+}
+
+.grass {
+  background: linear-gradient(180deg, #288a36 2%, #38BF4B 50%);
+
+  box-shadow: 0 0 7px #38BF4B;
+}
+
+.ground {
+  background: linear-gradient(180deg, #ce5518 2%, #E87236 50%);
+
+  box-shadow: 0 0 7px #E87236;
+}
+
+.ice {
+  background: linear-gradient(180deg, #2fb7a5 2%, #4CD1C0 50%);
+
+  box-shadow: 0 0 7px #4CD1C0;
+}
+
+.normal {
+  background: linear-gradient(180deg, #525a61 2%, #69737c 50%);
+
+  box-shadow: 0 0 7px #69737c;
+}
+
+.poison {
+  background: linear-gradient(180deg, #9138ae 2%, #B567CE 50%);
+
+  box-shadow: 0 0 7px #B567CE;
+}
+
+.psychic {
+  background: linear-gradient(180deg, #ff1a30 2%, #FF6675 50%);
+
+  box-shadow: 0 0 7px #FF6675;
+}
+
+.rock {
+  background: linear-gradient(180deg, #9e8648 2%, #C8B686 50%);
+
+  box-shadow: 0 0 7px #C8B686;
+}
+
+.steel {
+  background: linear-gradient(180deg, #528194 2%, #5A8EA2 50%);
+
+  box-shadow: 0 0 7px #5A8EA2;
+}
+
+.water {
+  background: linear-gradient(180deg, #227cc3 2%, #3692DC 50%);
+
+  box-shadow: 0 0 7px #3692DC;
+}
