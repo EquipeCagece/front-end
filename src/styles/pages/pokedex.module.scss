@@ -1,0 +1,113 @@
+.container {
+  height: 100vh;
+
+  display: flex;
+}
+
+.content {
+  max-width: 1120px;
+  margin: 64px auto;
+
+  header {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--text-body);
+
+    input {
+      height: 2.5rem;
+      border-radius: 3rem 0 0 3rem;
+      border: 2.5px solid var(--blue);
+      background: transparent;
+      color: var(--red);
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 1rem;
+
+      transition: all 0.2s;
+
+      &:focus {
+        box-shadow: 0 0 20px var(--blue);
+      }
+    }
+
+    button {
+      background: var(--blue);
+      border-radius: 0 3rem 3rem 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 1rem 0;
+
+      border: 0;
+
+      transition: all 0.2s;
+
+      &:hover {
+        box-shadow: 0 0 10px var(--blue);
+      }
+    }
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+
+    padding: 2rem 0;
+
+    div {
+      background: var(--black-op-700);
+      border-radius: 1.5rem;
+
+      img {
+        width: 100%;
+        height: 15rem;
+        border-radius: 16px 16px 0 0;
+        border-bottom: 1px solid var(--red);
+      }
+
+      div {
+        background: transparent;
+        display: flex;
+        justify-content: space-around;
+        padding: 0.7rem 0 0.7rem 0;
+        color: var(--text-title);
+
+        p {
+          font-weight: bold;
+        }
+      }
+
+      transition: all 0.2s;
+
+      &.card:hover {
+        transform: scale(1.1);
+        box-shadow: 8px 10px 10px var(--green);
+        cursor: pointer;
+      }
+
+      &.card {
+        opacity: 0;
+        animation: appearFromUnderneath 1s linear;
+        animation-fill-mode:forwards;
+        animation-delay: 5s;
+          @for $i from 1 through 21{
+            &:nth-child(#{$i}){
+              animation-delay: $i * 0.1s;
+            }
+          }
+      }
+    }
+  }
+}
+
+@keyframes appearFromUnderneath {
+  from {
+    opacity: 0;
+    top: 100px;
+  }to {
+    opacity: 1;
+    top: 0px;
+  }
+}
