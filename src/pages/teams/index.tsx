@@ -4,7 +4,7 @@ import { FiPlusSquare, FiSearch } from 'react-icons/fi';
 import styles from './teams.module.scss';
 
 import { Grid } from '../../components/Grid';
-import { GridItem } from '../../components/Grid/GridItem';
+import { GridItemTeam } from '../../components/Grid/GridItemTeam';
 
 export default function Teams(): JSX.Element {
   return (
@@ -34,41 +34,41 @@ export default function Teams(): JSX.Element {
           </header>
 
           <Grid>
-            <GridItem>
+            <GridItemTeam>
               <img src="/images/background_0.jpg" alt="pokemon" />
 
               <div>
                 <p>001</p>
                 <p>Time do Pedro</p>
               </div>
-            </GridItem>
+            </GridItemTeam>
 
-            <GridItem>
+            <GridItemTeam>
               <img src="/images/background_1.jpg" alt="pokemon" />
 
               <div>
                 <p>002</p>
                 <p>Time do Edu</p>
               </div>
-            </GridItem>
+            </GridItemTeam>
 
-            <GridItem>
+            <GridItemTeam>
               <img src="/images/background_2.jpg" alt="pokemon" />
 
               <div>
                 <p>003</p>
                 <p>Time do Daniel</p>
               </div>
-            </GridItem>
+            </GridItemTeam>
 
-            <GridItem>
+            <GridItemTeam>
               <img src="/images/background_3.jpg" alt="pokemon" />
 
               <div>
                 <p>004</p>
                 <p>Time do Rodrigo</p>
               </div>
-            </GridItem>
+            </GridItemTeam>
           </Grid>
         </div>
       </main>
