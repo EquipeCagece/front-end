@@ -35,13 +35,12 @@ export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
           style={{
             backgroundColor: backgroundColors[0][0].light,
           }}
-        >
-          <img
-            className={styles.imageContainer}
-            src={pokemon.imageUrl}
-            alt={pokemon.name}
-          />
-        </nav>
+        />
+        <img
+          className={styles.imageContainer}
+          src={pokemon.imageUrl}
+          alt={pokemon.name}
+        />
       </section>
 
       <div>
