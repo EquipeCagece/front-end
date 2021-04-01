@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { FiSearch } from 'react-icons/fi';
 
+import Link from 'next/link';
 import styles from './pokedex.module.scss';
 
 import { Grid } from '../../components/Grid';
@@ -24,7 +25,7 @@ export default function Pokedex(): JSX.Element {
     pokemon3: {
       types: ['water'],
       imageUrl:
-        'http://assets.stickpng.com/images/580b57fcd9996e24bc43c32a.png',
+        'https://www.nicepng.com/png/full/30-301637_chibi-by-myooomy-on-deviantart-cool-squirtle-transparent.png',
       name: 'squirtle',
     },
 
@@ -52,7 +53,11 @@ export default function Pokedex(): JSX.Element {
           </header>
 
           <Grid>
-            <GridItemPokemon pokemon={data.pokemon1} />
+            <Link href="/pokedex/pokemon/1">
+              <a>
+                <GridItemPokemon pokemon={data.pokemon1} />
+              </a>
+            </Link>
 
             <GridItemPokemon pokemon={data.pokemon2} />
 

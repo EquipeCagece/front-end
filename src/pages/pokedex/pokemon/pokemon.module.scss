@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+
+  height: 100vh;
+}
+
+.content {
+  width: 1400px;
+  margin: 64px auto;
+  display: flex;
+
+  animation: appearFromOpacity0 2s;
+
+  > section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: -5;
+    height: 100%;
+    width: 50%;
+
+    aside {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 3rem;
+
+      span {
+        color: var(--text-title);
+        font-weight: 500;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+
+      h2 {
+        font-weight: bold;
+        color: var(--white);
+        font-size: 2rem;
+      }
+    }
+
+    div {
+      border-radius: 9999px;
+      position: absolute;
+      width: 10.9375rem;
+      height: 10.9375rem;
+      z-index: -10;
+      bottom: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -20%);
+    }
+    img {
+      height: 20rem;
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5rem;
+
+    background: var(--black-op-700);
+
+    header {
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        background: transparent;
+        color: var(--text-body);
+        display: inline-block;
+        position: relative;
+        padding: 0 0.5rem;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 1.1rem;
+
+        &.active {
+          color: var(--text-title);
+          font-weight: bold;
+
+          &::after {
+            content: '';
+            height: 3px;
+            border-radius: 3px 3px 0 0;
+            width: 100%;
+            position: absolute;
+            bottom: 1px;
+            left: 0;
+            background: var(--red);
+          }
+        }
+      }
+    }
+
+    section.evolutions {
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      svg {
+        color: var(--red)
+      }
+
+      svg:last-child {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes appearFromOpacity0 {
+  from {
+    opacity: 0;
+  }to {
+    opacity: 1;
+  }
+}
