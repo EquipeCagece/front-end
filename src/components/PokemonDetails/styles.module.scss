@@ -1,0 +1,13 @@
+.container {
+  margin-top: 3rem;
+
+  > div {
+    display: flex;
+    margin-top: 2rem;
+    p {
+      flex: 1;
+      max-width: 100px;
+      color: var(--text-body);
+    }
+  }
+}

@@ -31,7 +31,7 @@ export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
       }}
     >
       <section>
-        <nav
+        <div
           style={{
             backgroundColor: backgroundColors[0][0].light,
           }}
