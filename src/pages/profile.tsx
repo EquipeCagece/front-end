@@ -22,7 +22,7 @@ export default function Profile(): JSX.Element {
                 <input type="file" id="avatar" />
               </label>
             </div>
-            
+
             <input type="text" placeholder="Nome" />
 
             <input type="email" placeholder="E-mail" />
