@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+
+  height: 100vh;
+}
+
+.content {
+  width: 1400px;
+  margin: 64px auto;
+
+  display: flex;
+
+  animation: appearFromOpacity0 2s;
+
+  div {
+    h1, h2 {
+      margin: 1rem 0;
+    }
+
+    padding: 3rem;
+  }
+
+  div.pokemons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    background: var(--black-op-700);
+
+    & + div {
+      margin-left: 8rem;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+
+       div {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background: var(--blue-dark);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        transition: all 0.3s;
+
+        h3 {
+          flex: 1;
+          max-width: 100px;
+        }
+
+        & + div {
+          margin-top: 1rem;
+        }
+
+        &:hover {
+          box-shadow: 0 10px 10px var(--blue);
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  div.stats {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+
+    background: var(--black-op-700);
+
+    section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background: var(--blue-dark);
+
+      & + section {
+        margin-left: 2rem;
+      }
+    }
+  }
+}
+
+
+@keyframes appearFromOpacity0 {
+  from {
+    opacity: 0;
+  }to {
+    opacity: 1;
+  }
+}
