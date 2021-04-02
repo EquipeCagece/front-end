@@ -2,9 +2,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
 
-import styles from '../styles/pages/home.module.scss';
+import { useAuth } from '../hooks/useAuth';
+
+import styles from '../styles/pages/commonStylesHome.module.scss';
 
 export default function Home(): JSX.Element {
+  const {} = useAuth();
+
   const [randomValue, setRandoValue] = useState(0);
   const [formData, setFormData] = useState({
     name: '',

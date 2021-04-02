@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 
-import styles from '../styles/pages/home.module.scss';
+import styles from '../styles/pages/commonStylesHome.module.scss';
 
 // const myLoader = (): number => {
 //   return Math.floor(Math.random() * 10);
