@@ -1,18 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
-
 import { useAuth } from '../hooks/useAuth';
 
 import styles from '../styles/pages/commonStylesHome.module.scss';
 
 export default function Home(): JSX.Element {
-  const {} = useAuth();
+  const auth = useAuth();
 
   const [randomValue, setRandoValue] = useState(0);
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
+    password: '',
   });
 
   useEffect(() => {
@@ -21,13 +20,16 @@ export default function Home(): JSX.Element {
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>): void {
     const { name, value } = event.target;
-
     setFormData({ ...formData, [name]: value });
   }
 
   function handleSubmit(event: FormEvent): void {
     event.preventDefault();
     console.log('submit');
+    auth.signIn({
+      email: formData.email,
+      password: formData.password,
+    });
   }
 
   return (
