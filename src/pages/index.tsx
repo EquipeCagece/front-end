@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Head from 'next/head';
 import Link from 'next/link';
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';

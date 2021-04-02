@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Head from 'next/head';
 import { FiPlusSquare, FiSearch } from 'react-icons/fi';
 
@@ -17,13 +18,6 @@ export default function Teams(): JSX.Element {
         <div className={styles.content}>
           <header>
             <div>
-              <div>
-                <input type="text" placeholder="Pesquise um pokemon" />
-                <button type="button">
-                  <FiSearch size={20} color="#e8eaf6" />
-                </button>
-              </div>
-
               <button type="button">
                 <div className={styles.text}>Criar time</div>
                 <div className={styles.icon}>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Head from 'next/head';
 import { FiSearch } from 'react-icons/fi';
 

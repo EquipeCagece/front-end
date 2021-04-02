@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styles from './team.module.scss';
 
 export default function Team(): JSX.Element {

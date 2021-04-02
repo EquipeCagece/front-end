@@ -1,0 +1,69 @@
+.container {
+  border-radius: 1.5rem;
+
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    div {
+      border-radius: 9999px;
+      position: absolute;
+      width: 10.9375rem;
+      height: 10.9375rem;
+      z-index: -10;
+      bottom: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -20%);
+    }
+    img {
+      height: 15rem;
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+
+  div {
+    background: #000;
+    border-radius: 0 0 1rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.7rem 0 0.7rem 0;
+    color: var(--text-title);
+
+    p {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 10px 10px var(--green);
+    cursor: pointer;
+  }
+
+  opacity: 0;
+  animation: appearFromUnderneath 1s linear;
+  animation-fill-mode:forwards;
+  animation-delay: 5s;
+    @for $i from 1 through 21{
+      &:nth-child(#{$i}){
+        animation-delay: $i * 0.1s;
+      }
+    }
+}
+
+@keyframes appearFromUnderneath {
+  from {
+    opacity: 0;
+    top: 100px;
+  }to {
+    opacity: 1;
+    top: 0px;
+  }
+}

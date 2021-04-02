@@ -1,4 +1,4 @@
-import { FiPower, FiUser, FiSearch, FiPlusCircle } from 'react-icons/fi';
+import { FiPower, FiUser, FiSearch, FiPlusCircle, FiHeart } from 'react-icons/fi';
 import styles from './styles.module.scss';
 import { ActiveLink } from '../ActiveLink';
 
@@ -19,6 +19,11 @@ export function SideBar(): JSX.Element {
         <ActiveLink activeClassName={styles.active} href="/teams">
           <a>
             <FiPlusCircle size={35} />
+          </a>
+        </ActiveLink>
+        <ActiveLink activeClassName={styles.active} href="/favorites">
+          <a>
+            <FiHeart size={35} />
           </a>
         </ActiveLink>
       </nav>
