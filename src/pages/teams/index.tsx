@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier */
 import Head from 'next/head';
 import { FiPlusSquare } from 'react-icons/fi';
-import { useState } from 'react'
+import { useState } from 'react';
 
 import styles from './teams.module.scss';
 
@@ -12,8 +11,12 @@ import { ModalTeam } from '../../components/Modal';
 export default function Teams(): JSX.Element {
   const [isNewTeamModalOpen, setIsNewTeamModalOpen] = useState(false);
 
-  function toggleModal(): void {
-    setIsNewTeamModalOpen(!isNewTeamModalOpen)
+  function handleModalOpen(): void {
+    setIsNewTeamModalOpen(true);
+  }
+
+  function handleModalClose(): void {
+    setIsNewTeamModalOpen(false);
   }
 
   return (
@@ -26,7 +29,7 @@ export default function Teams(): JSX.Element {
         <div className={styles.content}>
           <header>
             <div>
-              <button type="button" onClick={toggleModal}>
+              <button type="button" onClick={handleModalOpen}>
                 <div className={styles.text}>Criar time</div>
                 <div className={styles.icon}>
                   <FiPlusSquare size={20} />
@@ -73,7 +76,10 @@ export default function Teams(): JSX.Element {
             </GridItemTeam>
           </Grid>
         </div>
-        <ModalTeam isOpen={isNewTeamModalOpen} onRequest={toggleModal} />
+        <ModalTeam
+          isOpen={isNewTeamModalOpen}
+          onRequestClose={handleModalClose}
+        />
       </main>
     </>
   );
