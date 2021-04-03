@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import Head from 'next/head';
-import { FiPlusSquare, FiSearch } from 'react-icons/fi';
+import { FiPlusSquare } from 'react-icons/fi';
 
 import styles from './teams.module.scss';
 
 import { Grid } from '../../components/Grid';
 import { GridItemTeam } from '../../components/Grid/GridItemTeam';
+import { ModalTeam } from '../../components/Modal';
 
 export default function Teams(): JSX.Element {
   return (
