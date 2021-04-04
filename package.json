@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@unform/core": "^2.1.6",
+    "@unform/web": "^2.1.6",
     "axios": "^0.21.1",
     "framer-motion": "^4.0.3",
     "js-cookie": "^2.2.1",
@@ -18,7 +20,10 @@
     "react-dropzone": "^11.3.2",
     "react-icons": "^4.2.0",
     "react-modal": "^3.12.1",
-    "sass": "^1.32.8"
+    "react-toastify": "^7.0.3",
+    "sass": "^1.32.8",
+    "uuidv4": "^6.2.7",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.6",

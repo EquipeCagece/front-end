@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useCallback, useState } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';

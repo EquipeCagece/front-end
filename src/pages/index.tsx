@@ -1,15 +1,32 @@
-/* eslint-disable prettier/prettier */
+import { useState, ChangeEvent, useEffect, useRef } from 'react';
+
 import Head from 'next/head';
 import Link from 'next/link';
-import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
+
+import { toast } from 'react-toastify';
+
 import { useAuth } from '../hooks/useAuth';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 
 import styles from '../styles/pages/commonStylesHome.module.scss';
+import getValidationErrors from '../utils/getValidationErrors';
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
 
 export default function Home(): JSX.Element {
-  const auth = useAuth();
+  const { signIn } = useAuth();
+  const { push } = useRouter();
+
+  const formRef = useRef<FormHandles>(null);
 
   const [randomValue, setRandoValue] = useState(0);
   const [formData, setFormData] = useState({
@@ -26,13 +43,35 @@ export default function Home(): JSX.Element {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleSubmit(event: FormEvent): void {
-    event.preventDefault();
-    console.log('submit');
-    auth.signIn({
-      email: formData.email,
-      password: formData.password,
-    });
+  async function handleSubmit(data: SignInFormData): Promise<void> {
+    try {
+      formRef.current?.setErrors({});
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .required('Email obrigatório')
+          .email('Digite um email válido'),
+        password: Yup.string().required('Senha obrigatória'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      await signIn({
+        email: data.email,
+        password: data.password,
+      });
+
+      push('/profile');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+      }
+
+      toast.error('Ocorreu um erro ao fazer login, cheque as credenciais.');
+    }
   }
 
   return (
@@ -54,7 +93,7 @@ export default function Home(): JSX.Element {
           </a>
         </Link>
         <div>
-          <form onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Login</h1>
 
             <Input
@@ -72,7 +111,7 @@ export default function Home(): JSX.Element {
             />
 
             <Button type="submit">Entrar</Button>
-          </form>
+          </Form>
 
           <nav className={styles.links}>
             Não tem conta?

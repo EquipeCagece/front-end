@@ -1,25 +1,75 @@
+import { useState, useEffect, useRef } from 'react';
+
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+import { useRouter } from 'next/router';
+
+import * as Yup from 'yup';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+
+import { toast } from 'react-toastify';
+
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 
 import styles from '../styles/pages/commonStylesHome.module.scss';
+import getValidationErrors from '../utils/getValidationErrors';
+import api from '../services/api';
+
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
 
 export default function SignUp(): JSX.Element {
+  const formRef = useRef<FormHandles>(null);
   const [randomValue, setRandoValue] = useState(0);
+
+  const { push } = useRouter();
 
   useEffect(() => {
     setRandoValue(Math.floor(Math.random() * 10));
   }, []);
 
-  function handleSubmit(event: FormEvent): void {
-    event.preventDefault();
-    console.log('submit');
-  }
+  async function handleSubmit(data: SignUpFormData): Promise<void> {
+    try {
+      formRef.current?.setErrors({});
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string()
+          .required('Email obrigatório')
+          .email('Digite um email válido'),
+        password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+        password_confirmation: Yup.string().oneOf(
+          [Yup.ref('password')],
+          'Confirmação incorreta'
+        ),
+      });
 
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>): void {
-    // To do
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      await api.post('/users', data);
+
+      push('/');
+
+      toast.success(
+        'Cadastro realizado. Você já pode fazer seu logon na PokeTeam'
+      );
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+      }
+
+      toast.error(
+        'Erro no Cadastro. Ocorreu um erro ao fazer o cadastro, tente novamente.'
+      );
+    }
   }
 
   return (
@@ -41,23 +91,29 @@ export default function SignUp(): JSX.Element {
           </a>
         </Link>
         <div>
-          <form>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Cadastro</h1>
 
-            <Input type="text" id="name" placeholder="Nome" />
+            <Input name="name" type="text" id="name" placeholder="Nome" />
 
-            <Input type="text" id="email" placeholder="E-mail" />
-
-            <Input type="password" id="password" placeholder="Senha" />
+            <Input name="email" type="text" id="email" placeholder="E-mail" />
 
             <Input
+              name="password"
+              type="password"
+              id="password"
+              placeholder="Senha"
+            />
+
+            <Input
+              name="password_confirmation"
               type="password"
               id="password_confirmation"
               placeholder="Confirmar Senha"
             />
 
             <Button type="submit">Cadastrar</Button>
-          </form>
+          </Form>
 
           <nav className={styles.links}>
             Já possui conta?
