@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import { useCallback, useState } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
 import { FiUpload, FiX } from 'react-icons/fi';
-
+import { Input } from '../Input';
+import { Button } from '../Button';
 import styles from './styles.module.scss';
 
 interface ModalProps {
@@ -61,8 +63,8 @@ export function ModalTeam({ isOpen, onRequestClose }: ModalProps): JSX.Element {
             </p>
           )}
         </section>
-        <input type="text" placeholder="Nome do time" />
-        <button type="button">Criar Time</button>
+        <Input type="text" placeholder="Nome do time" />
+        <Button> Criar Time </Button>
       </div>
     </Modal>
   );
