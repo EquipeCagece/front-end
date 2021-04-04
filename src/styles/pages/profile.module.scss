@@ -3,7 +3,7 @@
 
   display: flex;
 
-  div {
+  > div {
     max-width: 1120px;
     margin: 0 auto;
 
@@ -20,46 +20,6 @@
       align-items: center;
       justify-content: center;
 
-      input {
-        text-align: center;
-        width: calc(100% + 2rem);
-        height: 2.5rem;
-        border-radius: 3rem;
-        border: 2.5px solid var(--blue);
-        background: transparent;
-        color: var(--red);
-        font-weight: 400;
-        font-size: 1rem;
-
-        transition: all 0.2s;
-
-        &+input {
-          margin-top: 1rem;
-        }
-
-        &:focus {
-          border: 2.5px solid var(--green);
-          box-shadow: 0 0 40px var(--green);
-        }
-      }
-
-      button {
-        margin-top: 2rem;
-        background: transparent;
-        color: var(--white);
-        border: 2.5px solid var(--green);
-        height: 3rem;
-        border-radius: 3rem;
-        align-self: stretch;
-
-        transition: all 0.2s;
-
-        &:hover {
-          background: var(--green);
-          box-shadow: 0 0 40px var(--green);
-        }
-      }
-
       .avatarInput {
         margin-bottom: 3rem;
         position: relative;
@@ -69,6 +29,7 @@
           width: 11.6rem;
           height: 11.6rem;
           border-radius: 50%;
+          background: var(--black-op-700);
         }
 
         label {

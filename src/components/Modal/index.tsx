@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react';
 import Modal from 'react-modal';
 import { useDropzone } from 'react-dropzone';
 import { FiUpload, FiX } from 'react-icons/fi';
-import { Input } from '../Input';
 import { Button } from '../Button';
 import styles from './styles.module.scss';
 
@@ -62,7 +61,7 @@ export function ModalTeam({ isOpen, onRequestClose }: ModalProps): JSX.Element {
             </p>
           )}
         </section>
-        <Input type="text" placeholder="Nome do time" />
+        <input type="text" placeholder="Nome do time" />
         <Button> Criar Time </Button>
       </div>
     </Modal>

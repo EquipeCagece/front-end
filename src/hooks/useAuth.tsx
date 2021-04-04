@@ -41,8 +41,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [data, setData] = useState<AuthState>(() => {
-    const token = Cookies.get('@PokeTeam:token');
-    const user = Cookies.get('@PokeTeam:user');
+    const token = Cookies.get('token');
+    const user = Cookies.get('user');
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
@@ -64,8 +64,8 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
 
     const { token, user } = response.data;
 
-    Cookies.set('@PokeTeam:token', token);
-    Cookies.set('@PokeTeam:user', user);
+    Cookies.set('token', token);
+    Cookies.set('user', JSON.stringify(user));
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
@@ -73,15 +73,15 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   }, []);
 
   const signOut = useCallback(() => {
-    Cookies.remove('@PokeTeam:token');
-    Cookies.remove('@PokeTeam:user');
+    Cookies.remove('token');
+    Cookies.remove('user');
 
     setData({} as AuthState);
   }, []);
 
   const updateUser = useCallback(
     async (user: User) => {
-      Cookies.set('@PokeTeam:user', user);
+      Cookies.set('user', JSON.stringify(user));
 
       setData({
         token: data.token,

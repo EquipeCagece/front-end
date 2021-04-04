@@ -4,36 +4,35 @@ import styles from './styles.module.scss';
 
 interface GridItemProps {
   pokemon: {
-    types: string[];
-    imageUrl: string;
+    id: number;
     name: string;
+    imageUrl: string;
+    types: Array<{
+      name: string;
+    }>;
   };
 }
 
 export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
   const backgroundColors = pokemon.types.map(type => {
-    const types = type.split(', ').map(t => {
-      const [[, backgroundColor]] = Object.entries(PokemonTypeColors).filter(
-        ([key, _]) => key === t
-      );
+    const [[, backgroundColor]] = Object.entries(PokemonTypeColors).filter(
+      ([key, _]) => key === type.name
+    );
 
-      return backgroundColor;
-    });
-
-    return types;
+    return backgroundColor;
   });
 
   return (
     <div
       className={styles.container}
       style={{
-        backgroundColor: backgroundColors[0][0].medium,
+        backgroundColor: backgroundColors[0].medium,
       }}
     >
       <section>
         <div
           style={{
-            backgroundColor: backgroundColors[0][0].light,
+            backgroundColor: backgroundColors[0].light,
           }}
         />
         <img
@@ -44,19 +43,14 @@ export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
       </section>
 
       <div>
-        {pokemon.types.map(type =>
-          type.split(', ').map((t, index) => {
-            const key = index;
-            return (
-              <img
-                key={key}
-                className={`${t} pokemonIcon`}
-                src={`./types/${t}.svg`}
-                alt={t}
-              />
-            );
-          })
-        )}
+        {pokemon.types.map(type => (
+          <img
+            key={type.name}
+            className={`${type.name} pokemonIcon`}
+            src={`./types/${type.name}.svg`}
+            alt={type.name}
+          />
+        ))}
 
         <p>{pokemon.name}</p>
       </div>

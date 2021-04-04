@@ -39,41 +39,8 @@ export default function Teams(): JSX.Element {
           </header>
 
           <Grid>
-            <GridItemTeam>
-              <img src="/images/background_0.jpg" alt="pokemon" />
-
-              <div>
-                <p>001</p>
-                <p>Time do Pedro</p>
-              </div>
-            </GridItemTeam>
-
-            <GridItemTeam>
-              <img src="/images/background_1.jpg" alt="pokemon" />
-
-              <div>
-                <p>002</p>
-                <p>Time do Edu</p>
-              </div>
-            </GridItemTeam>
-
-            <GridItemTeam>
-              <img src="/images/background_2.jpg" alt="pokemon" />
-
-              <div>
-                <p>003</p>
-                <p>Time do Daniel</p>
-              </div>
-            </GridItemTeam>
-
-            <GridItemTeam>
-              <img src="/images/background_3.jpg" alt="pokemon" />
-
-              <div>
-                <p>004</p>
-                <p>Time do Rodrigo</p>
-              </div>
-            </GridItemTeam>
+            <GridItemTeam imageUrl="/images/background_0.jpg" name="Pedro" />
+            <GridItemTeam imageUrl="/images/background_1.jpg" name="Pedro" />
           </Grid>
         </div>
         <ModalTeam

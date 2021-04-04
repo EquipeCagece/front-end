@@ -1,11 +1,18 @@
-import { ReactNodeArray } from 'react';
-
 import styles from './styles.module.scss';
 
 interface GridItemProps {
-  children: ReactNodeArray;
+  imageUrl: string;
+  name: string;
 }
 
-export function GridItemTeam({ children }: GridItemProps): JSX.Element {
-  return <div className={`${styles.container}`}>{children}</div>;
+export function GridItemTeam({ imageUrl, name }: GridItemProps): JSX.Element {
+  return (
+    <div className={`${styles.container}`}>
+      <img src={imageUrl} alt={name} />
+
+      <div>
+        <p>{name}</p>
+      </div>
+    </div>
+  );
 }

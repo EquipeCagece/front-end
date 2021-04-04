@@ -8,7 +8,8 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 import { useAuth } from '../hooks/useAuth';
 import { Input } from '../components/Input';
@@ -68,9 +69,18 @@ export default function Home(): JSX.Element {
         const errors = getValidationErrors(err);
 
         formRef.current?.setErrors(errors);
+        return;
       }
 
-      toast.error('Ocorreu um erro ao fazer login, cheque as credenciais.');
+      toast.error('Ocorreu um erro ao fazer login, cheque as credenciais.', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -79,6 +89,7 @@ export default function Home(): JSX.Element {
       <Head>
         <title>PokeTeam | Login</title>
       </Head>
+      <ToastContainer />
       <div
         className={styles.container}
         style={{
