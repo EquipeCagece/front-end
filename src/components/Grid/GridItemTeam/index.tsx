@@ -5,7 +5,7 @@ interface GridItemProps {
     imageUrl: string;
     name: string;
     id: string;
-  }
+  };
 }
 
 export function GridItemTeam({ team }: GridItemProps): JSX.Element {

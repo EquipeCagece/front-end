@@ -1,8 +1,10 @@
-import { GetServerSideProps } from 'next'
+import { useState } from 'react';
 
+import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 import Head from 'next/head';
+
 import { FiPlusSquare } from 'react-icons/fi';
-import React, { useState } from 'react';
 
 import styles from './teams.module.scss';
 
@@ -10,14 +12,13 @@ import { Grid } from '../../components/Grid';
 import { GridItemTeam } from '../../components/Grid/GridItemTeam';
 import { ModalTeam } from '../../components/Modal';
 import api from '../../services/api';
-import Link from 'next/link';
 
 interface TeamsProps {
   teams: {
     id: string;
     name: string;
     imageUrl: string;
-  }[]
+  }[];
 }
 
 export default function Teams({ teams }: TeamsProps): JSX.Element {
@@ -51,13 +52,14 @@ export default function Teams({ teams }: TeamsProps): JSX.Element {
           </header>
 
           <Grid>
-            { teams.length !== 0 && teams.map(team => (
-              <Link href={`/team/${team.id}`}>
-                <a>
-                  <GridItemTeam team={team} />
-                </a> 
-              </Link>
-            ))}
+            {teams.length !== 0 &&
+              teams.map(team => (
+                <Link key={team.id} href={`/team/${team.id}`}>
+                  <a>
+                    <GridItemTeam team={team} />
+                  </a>
+                </Link>
+              ))}
           </Grid>
         </div>
         <ModalTeam
@@ -69,8 +71,16 @@ export default function Teams({ teams }: TeamsProps): JSX.Element {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await api.get('/teams/');
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { token } = req.cookies;
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  const response = await api.get('/teams', config);
+
+  console.log(response.data);
 
   return {
     props: {
