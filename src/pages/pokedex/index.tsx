@@ -39,7 +39,7 @@ export default function Pokedex({ pokemons }: PokedexProps): JSX.Element {
 
           <Grid>
             {pokemons.map(pokemon => (
-              <Link href={`/pokedex/pokemon/${String(pokemon.id)}`}>
+              <Link href={`/pokemon/${String(pokemon.id)}`}>
                 <a>
                   <GridItemPokemon pokemon={pokemon} />
                 </a>

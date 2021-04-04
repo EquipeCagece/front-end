@@ -8,7 +8,8 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
@@ -55,10 +56,17 @@ export default function SignUp(): JSX.Element {
       await api.post('/users', data);
 
       push('/');
-
-      toast.success(
-        'Cadastro realizado. Você já pode fazer seu logon na PokeTeam'
-      );
+      
+      toast.success('Cadastro realizado. Você já pode fazer seu logon na PokeTeam.', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -66,9 +74,15 @@ export default function SignUp(): JSX.Element {
         formRef.current?.setErrors(errors);
       }
 
-      toast.error(
-        'Erro no Cadastro. Ocorreu um erro ao fazer o cadastro, tente novamente.'
-      );
+      toast.error('Erro no Cadastro. Ocorreu um erro ao fazer o cadastro, tente novamente.', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 

@@ -1,17 +1,20 @@
 import styles from './styles.module.scss';
 
 interface GridItemProps {
-  imageUrl: string;
-  name: string;
+  team: {
+    imageUrl: string;
+    name: string;
+    id: string;
+  }
 }
 
-export function GridItemTeam({ imageUrl, name }: GridItemProps): JSX.Element {
+export function GridItemTeam({ team }: GridItemProps): JSX.Element {
   return (
     <div className={`${styles.container}`}>
-      <img src={imageUrl} alt={name} />
+      <img src={team.imageUrl} alt={team.name} />
 
       <div>
-        <p>{name}</p>
+        <p>{team.name}</p>
       </div>
     </div>
   );
