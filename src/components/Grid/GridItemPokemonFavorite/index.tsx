@@ -1,8 +1,5 @@
-/* eslint-disable prettier/prettier */
-import React from 'react';
 import { FiHeart } from 'react-icons/fi';
 import { PokemonTypeColors } from '../../../styles/globals';
-
 
 import styles from './styles.module.scss';
 
@@ -63,7 +60,7 @@ export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
         )}
 
         <p>{pokemon.name}</p>
-        <FiHeart size={24}/>
+        <FiHeart size={24} />
       </div>
     </div>
   );

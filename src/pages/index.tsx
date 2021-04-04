@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
+import { Input } from '../components/Input';
+import { Button } from '../components/Button';
 
 import styles from '../styles/pages/commonStylesHome.module.scss';
 
@@ -55,21 +57,21 @@ export default function Home(): JSX.Element {
           <form onSubmit={handleSubmit}>
             <h1>Login</h1>
 
-            <input
+            <Input
               type="text"
               placeholder="E-mail"
               name="email"
               onChange={handleInputChange}
             />
 
-            <input
+            <Input
               type="password"
               placeholder="Senha"
               name="password"
               onChange={handleInputChange}
             />
 
-            <button type="submit">Entrar</button>
+            <Button type="submit">Entrar</Button>
           </form>
 
           <nav className={styles.links}>

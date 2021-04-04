@@ -1,12 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+import { Input } from '../components/Input';
+import { Button } from '../components/Button';
 
 import styles from '../styles/pages/commonStylesHome.module.scss';
-
-// const myLoader = (): number => {
-//   return Math.floor(Math.random() * 10);
-// };
 
 export default function SignUp(): JSX.Element {
   const [randomValue, setRandoValue] = useState(0);
@@ -46,19 +44,19 @@ export default function SignUp(): JSX.Element {
           <form>
             <h1>Cadastro</h1>
 
-            <input type="text" id="name" placeholder="Nome" />
+            <Input type="text" id="name" placeholder="Nome" />
 
-            <input type="text" id="email" placeholder="E-mail" />
+            <Input type="text" id="email" placeholder="E-mail" />
 
-            <input type="password" id="password" placeholder="Senha" />
+            <Input type="password" id="password" placeholder="Senha" />
 
-            <input
+            <Input
               type="password"
               id="password_confirmation"
               placeholder="Confirmar Senha"
             />
 
-            <button type="submit">Cadastrar</button>
+            <Button type="submit">Cadastrar</Button>
           </form>
 
           <nav className={styles.links}>

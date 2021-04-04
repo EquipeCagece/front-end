@@ -1,0 +1,51 @@
+.inputContainer {
+  position: relative;
+  background:transparent;
+  border-radius: 3rem;
+  width: calc(100% + 2rem);
+  height: 2.5rem;
+  color: var(--red);
+  border: 2.5px solid var(--blue);
+  font-weight: 400;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  transition: all 0.4s;
+
+  & + div {
+    margin-top: 1rem;
+  }
+
+  &.isFocused {
+    width: calc(100% + 6rem);
+    border: 2.5px solid var(--green);
+    box-shadow: 0 0 40px var(--green);
+  }
+
+  input {
+    height: 100%;
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: var(--red);
+    text-align: center;
+  }
+}
+
+.error {
+  height: 20px;
+  margin-left: 1rem;
+
+  svg {
+    margin: 0;
+  }
+  span {
+    background: #c53030;
+    color: #fff;
+    &::before {
+      border-color:#c53030 transparent;
+    }
+  }
+}

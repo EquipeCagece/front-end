@@ -1,0 +1,16 @@
+.container {
+  margin-top: 2rem;
+  background: transparent;
+  color: var(--white);
+  border: 2.5px solid var(--green);
+  height: 3rem;
+  border-radius: 3rem;
+  align-self: stretch;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--green);
+    box-shadow: 0 0 40px var(--green);
+  }
+}

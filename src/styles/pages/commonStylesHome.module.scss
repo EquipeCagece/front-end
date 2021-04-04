@@ -12,7 +12,7 @@
     animation: appearFromAbove 0.8s;
   }
 
-  div {
+  > div {
     background: var(--black-op-700);
     padding: 3rem 10rem;
     box-shadow: 30px 30px 100px var(--blue-dark);
@@ -33,47 +33,6 @@
       h1 {
         margin-bottom: 2rem;
         font-weight: 500;
-      }
-
-      input {
-        text-align: center;
-        width: calc(100% + 2rem);
-        height: 2.5rem;
-        border-radius: 3rem;
-        border: 2.5px solid var(--blue);
-        background: transparent;
-        color: var(--red);
-        font-weight: 400;
-        font-size: 1rem;
-
-        transition: all 0.2s;
-
-        & + input {
-          margin-top: 1rem;
-        }
-
-        &:focus {
-          width: calc(100% + 6rem);
-          border: 2.5px solid var(--green);
-          box-shadow: 0 0 40px var(--green);
-        }
-      }
-
-      button {
-        margin-top: 2rem;
-        background: transparent;
-        color: var(--white);
-        border: 2.5px solid var(--green);
-        height: 3rem;
-        border-radius: 3rem;
-        align-self: stretch;
-
-        transition: all 0.2s;
-
-        &:hover {
-          background: var(--green);
-          box-shadow: 0 0 40px var(--green);
-        }
       }
     }
   }
