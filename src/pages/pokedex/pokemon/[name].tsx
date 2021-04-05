@@ -18,7 +18,8 @@ import api from '../../../services/api';
 interface PokemonProps {
   isFavorited: {
     id: string;
-    pokemon_id;
+    pokemon_id: number;
+    name: string;
   };
   pokemon: {
     id: number;
@@ -68,7 +69,7 @@ export default function Pokemon({
 
   useEffect(() => {
     setTabPokemon('details');
-    setIsPokemonFavorited(!!isFavorited.id);
+    setIsPokemonFavorited(!!isFavorited.name);
   }, [isFavorited]);
 
   const backgroundColors = pokemon.types.map(type => {
@@ -240,16 +241,16 @@ export const getServerSideProps: GetServerSideProps = async ({
     headers: { Authorization: `Bearer ${token}` },
   };
 
-  const response = await api.get(`/pokemon/stats/${name[0]}`, config);
+  const response = await api.get(`/pokemon/stats/${name}`, config);
   const responseEvolutinons = await api.get(
-    `/pokemon/evolutions/${name[0]}`,
+    `/pokemon/evolutions/${name}`,
     config
   );
 
   const { data: pokemonsFavorited } = await api.get('/favorites', config);
 
   const checkPokemonIsFavorited = pokemonsFavorited.filter(
-    pokemon => pokemon.pokemon_id === response.data.id
+    pokemon => pokemon.name === response.data.name
   );
 
   return {

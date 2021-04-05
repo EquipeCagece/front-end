@@ -45,6 +45,10 @@
       &:hover {
         box-shadow: 0 0 10px var(--blue);
       }
+
+      &.clear {
+        background: var(--red);
+      }
     }
   }
 }

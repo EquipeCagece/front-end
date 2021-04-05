@@ -40,7 +40,7 @@ export default function Pokedex({ pokemons }: FavoritesProps): JSX.Element {
           <Grid>
             {pokemons.length !== 0 &&
               pokemons.map(pokemon => (
-                <Link href={`/pokemon/${String(pokemon.id)}`}>
+                <Link href={`/pokedex/pokemon/${pokemon.name}`}>
                   <a>
                     <GridItemPokemon pokemon={pokemon} />
                   </a>
@@ -61,8 +61,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 
   const response = await api.get('/favorites', config);
-
-  console.log(response.data);
 
   return {
     props: {

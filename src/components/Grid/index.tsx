@@ -1,9 +1,9 @@
-import { ReactNodeArray } from 'react';
+import { ReactNodeArray, ReactNode } from 'react';
 
 import styles from './grid.module.scss';
 
 interface GridProps {
-  children: ReactNodeArray;
+  children: ReactNodeArray | ReactNode;
 }
 
 export function Grid({ children }: GridProps): JSX.Element {
