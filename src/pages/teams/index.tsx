@@ -54,7 +54,7 @@ export default function Teams({ teams }: TeamsProps): JSX.Element {
           <Grid>
             {teams.length !== 0 &&
               teams.map(team => (
-                <Link key={team.id} href={`/team/${team.id}`}>
+                <Link key={team.id} href={`/teams/team/${team.id}`}>
                   <a>
                     <GridItemTeam team={team} />
                   </a>

@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import { FiTrash2 } from 'react-icons/fi';
 import styles from './team.module.scss';
 
 export default function Team(): JSX.Element {
@@ -12,14 +12,27 @@ export default function Team(): JSX.Element {
             <section>
               <h2>Pokemons</h2>
               <div>
-                <h3>pikachu</h3>
-                <img
-                  src="../../types/electric.svg"
-                  className="pokemonIcon electric"
-                  alt="pikachu"
-                />
+                <button type="button">
+                  <FiTrash2 size={24} color="#ff6b6b" />
+                </button>
+                <strong>pikachu</strong>
+                <p>
+                  <img
+                    src="../../types/electric.svg"
+                    className="pokemonIcon electric"
+                    alt="pikachu"
+                  />
+                  <img
+                    src="../../types/bug.svg"
+                    className="pokemonIcon bug"
+                    alt="bug"
+                  />
+                </p>
               </div>
               <div>
+                <button type="button">
+                  <FiTrash2 />
+                </button>
                 <h3>charmander</h3>
                 <img
                   src="../../types/fire.svg"
@@ -28,6 +41,9 @@ export default function Team(): JSX.Element {
                 />
               </div>
               <div>
+                <button type="button">
+                  <FiTrash2 />
+                </button>
                 <h3>squirtle</h3>
                 <img
                   src="../../types/water.svg"
@@ -36,6 +52,9 @@ export default function Team(): JSX.Element {
                 />
               </div>
               <div>
+                <button type="button">
+                  <FiTrash2 />
+                </button>
                 <h3>bulbasaur</h3>
                 <img
                   src="../../types/grass.svg"
