@@ -1,28 +1,27 @@
 import Head from 'next/head';
 import { FiSearch } from 'react-icons/fi';
 
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import styles from './favorite.module.scss';
 
 import { Grid } from '../../components/Grid';
 import { GridItemPokemon } from '../../components/Grid/GridItemPokemonFavorite';
+import api from '../../services/api';
 
-export default function Pokedex(): JSX.Element {
-  const data = {
-    pokemon1: {
-      types: ['electric'],
-      imageUrl:
-        'https://i.pinimg.com/originals/9a/7b/a2/9a7ba23f62d913cc4e0c8e590b50995c.png',
-      name: 'pikachu',
-    },
+interface FavoritesProps {
+  pokemons: {
+    id: string;
+    name: string;
+    imageUrl: string;
+    types: Array<{
+      name: string;
+    }>;
+    pokemon_id: string;
+  }[];
+}
 
-    pokemon2: {
-      types: ['grass'],
-      imageUrl: 'https://cdn.bulbagarden.net/upload/2/21/001Bulbasaur.png',
-      name: 'bulbasaur',
-    },
-  };
-
+export default function Pokedex({ pokemons }: FavoritesProps): JSX.Element {
   return (
     <>
       <Head>
@@ -39,16 +38,35 @@ export default function Pokedex(): JSX.Element {
           </header>
 
           <Grid>
-            <Link href="/pokedex/pokemon/1">
-              <a>
-                <GridItemPokemon pokemon={data.pokemon1} />
-              </a>
-            </Link>
-
-            <GridItemPokemon pokemon={data.pokemon2} />
+            {pokemons.length !== 0 &&
+              pokemons.map(pokemon => (
+              <Link href={`/pokemon/${String(pokemon.id)}`}>
+                <a>
+                  <GridItemPokemon pokemon={pokemon} />
+                </a>
+              </Link>
+            ))}
           </Grid>
         </div>
       </main>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { token } = req.cookies;
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  const response = await api.get('/favorites', config);
+
+  console.log(response.data);
+
+  return {
+    props: {
+      pokemons: response.data ?? [],
+    },
+  };
+};
