@@ -11,6 +11,30 @@
 
   animation: appearFromOpacity0 2s;
 
+  > nav {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+
+    button {
+      background: transparent;
+      border-radius: 3rem;
+      color: var(--blue-dark);
+
+
+      & + button {
+        margin-top: 1rem;
+      }
+
+      &:hover {
+        transform: translate(-10px, -10px)
+      }
+    }
+
+    margin: 1rem;
+  }
+
   > section {
     display: flex;
     align-items: center;
@@ -23,20 +47,15 @@
     aside {
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       margin: 3rem;
 
-      span {
+      h1 {
         color: var(--text-title);
         font-weight: 500;
+        font-size: 2rem;
         display: inline-block;
         margin-bottom: 0.5rem;
-      }
-
-      h2 {
-        font-weight: bold;
-        color: var(--white);
-        font-size: 2rem;
       }
     }
 
@@ -103,12 +122,20 @@
       align-items: center;
       justify-content: space-between;
 
-      svg {
-        color: var(--red)
+      div:last-child {
+        svg {
+          display: none;
+        }
       }
 
-      svg:last-child {
-        display: none;
+      div {
+        display: flex;
+        align-items: center;
+
+        svg {
+          color: var(--red);
+          margin-left: 1rem;
+        }
       }
     }
   }

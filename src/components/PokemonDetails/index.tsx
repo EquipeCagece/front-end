@@ -1,18 +1,74 @@
 import styles from './styles.module.scss';
 
-export function PokemonDetails(): JSX.Element {
+interface PokemonDetailsProps {
+  pokemon: {
+    id: number;
+    name: string;
+    imageUrl: string;
+    height: number;
+    weight: number;
+    types: Array<{
+      name: string;
+    }>;
+    stats: Array<{
+      baseStatus: number;
+      name: string;
+    }>;
+    abilities: Array<{
+      name: string;
+    }>;
+  };
+}
+
+export function PokemonDetails({ pokemon }: PokemonDetailsProps): JSX.Element {
   return (
     <section className={styles.container}>
-      <strong>Detalhes do Pokemon</strong>
+      <div className={styles.detailsContainer}>
+        <h1>{pokemon.name}</h1>
+        <div className={styles.typesContainer}>
+          {pokemon.types.map(type => (
+            <img
+              src={`/types/${type.name}.svg`}
+              className={`pokemonIcon ${type.name}`}
+              alt={pokemon.name}
+            />
+          ))}
+        </div>
 
-      <div>
-        <span>Altura</span>
-        <p>0.6m</p>
+        <div className={styles.infosContainer}>
+          <div>
+            <strong>{pokemon.weight}</strong>
+            <span>Peso</span>
+          </div>
+
+          <div>
+            <strong>{pokemon.height}</strong>
+            <span>Altura</span>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <span>Peso</span>
-        <p>8.1kg</p>
+      <div className={styles.statusContainer}>
+        <div className={styles.stats}>
+          <h2>Status base</h2>
+
+          {pokemon.stats.map(stat => (
+            <div>
+              <p>
+                {stat.name} - <span>{stat.baseStatus}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className={styles.abilities}>
+          <h2>Habilidades</h2>
+
+          {pokemon.abilities.map((ability, index) => (
+            <p>
+              <span>{index + 1}.</span> {ability.name}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -17,7 +17,7 @@ interface TeamsProps {
   teams: {
     id: string;
     name: string;
-    imageUrl: string;
+    team_url: string;
   }[];
 }
 
@@ -79,8 +79,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 
   const response = await api.get('/teams', config);
-
-  console.log(response.data);
 
   return {
     props: {
