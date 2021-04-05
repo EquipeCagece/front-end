@@ -1,67 +1,58 @@
+import { GetServerSideProps } from 'next';
+import React from 'react';
 import { FiTrash2 } from 'react-icons/fi';
+import api from '../../../services/api';
 import styles from './team.module.scss';
 
-export default function Team(): JSX.Element {
+interface ProfileTeam {
+  team: { 
+    id: string;
+    name: string;
+    pokemons: Array<{
+      id: string;
+      name: string;
+      type1: string;
+      type2: string | null;
+    }>;
+
+  }
+}
+
+export default function Team({ team }: ProfileTeam) : JSX.Element {
   return (
     <>
       <div className={styles.container}>
         <main className={styles.content}>
           <div className={styles.pokemons}>
-            <h1>Time do Pedro</h1>
+            <h1>{ team.name }</h1>
 
             <section>
               <h2>Pokemons</h2>
-              <div>
-                <button type="button">
-                  <FiTrash2 size={24} color="#ff6b6b" />
-                </button>
-                <strong>pikachu</strong>
-                <p>
-                  <img
-                    src="../../types/electric.svg"
-                    className="pokemonIcon electric"
-                    alt="pikachu"
-                  />
-                  <img
-                    src="../../types/bug.svg"
-                    className="pokemonIcon bug"
-                    alt="bug"
-                  />
-                </p>
-              </div>
-              <div>
-                <button type="button">
-                  <FiTrash2 />
-                </button>
-                <h3>charmander</h3>
-                <img
-                  src="../../types/fire.svg"
-                  className="pokemonIcon fire"
-                  alt="charizard"
-                />
-              </div>
-              <div>
-                <button type="button">
-                  <FiTrash2 />
-                </button>
-                <h3>squirtle</h3>
-                <img
-                  src="../../types/water.svg"
-                  className="pokemonIcon water"
-                  alt="squirtle"
-                />
-              </div>
-              <div>
-                <button type="button">
-                  <FiTrash2 />
-                </button>
-                <h3>bulbasaur</h3>
-                <img
-                  src="../../types/grass.svg"
-                  className="pokemonIcon grass"
-                  alt="bulbasaur"
-                />
-              </div>
+              
+              {team.pokemons.length !== 0 &&
+              team.pokemons.map(pokemon => (
+                <div>
+                  <button type="button">
+                    <FiTrash2 size={24} color="#ff6b6b" />
+                  </button>
+                  <strong>{pokemon.name}</strong>
+                  <p>
+                    <img
+                      src={`../../types/${pokemon.type1}.svg`}
+                      className={`pokemonIcon ${pokemon.type1}`}
+                      alt={`${pokemon.name}`}
+                    />
+                    {pokemon.type2 !== null && (
+                      <img
+                        src={`../../types/${pokemon.type2}.svg`}
+                        className={`pokemonIcon ${pokemon.type2}`}
+                        alt={`${pokemon.name}`}
+                      />
+                    )}
+                  </p>
+                </div>                
+              ))}
+              
             </section>
           </div>
 
@@ -81,3 +72,19 @@ export default function Team(): JSX.Element {
     </>
   );
 }
+export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
+  const { token } = req.cookies;
+  const { id } = params;
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  const response = await api.get(`/teams/team/${id}`, config);
+
+  return {
+    props: {
+      team: response.data ?? [],
+    },
+  };
+};
