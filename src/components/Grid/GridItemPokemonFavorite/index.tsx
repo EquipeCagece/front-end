@@ -1,4 +1,4 @@
-import { FiHeart } from 'react-icons/fi';
+import { BsHeartFill } from 'react-icons/bs';
 import { PokemonTypeColors } from '../../../styles/globals';
 
 import styles from './styles.module.scss';
@@ -28,13 +28,13 @@ export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
     <div
       className={styles.container}
       style={{
-        backgroundColor: backgroundColors[0][0].medium,
+        backgroundColor: backgroundColors[0].medium,
       }}
     >
       <section>
         <div
           style={{
-            backgroundColor: backgroundColors[0][0].light,
+            backgroundColor: backgroundColors[0].light,
           }}
         />
         <img
@@ -55,7 +55,7 @@ export function GridItemPokemon({ pokemon }: GridItemProps): JSX.Element {
         ))}
 
         <p>{pokemon.name}</p>
-        <FiHeart size={24} />
+        <BsHeartFill color="#ff6b6b" size={30} />
       </div>
     </div>
   );

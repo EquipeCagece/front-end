@@ -90,6 +90,7 @@ export default function Pokemon({
   async function handleFavoritePokemon(): Promise<void> {
     await api.post(`favorites/create`, {
       pokemon_id: pokemon.id,
+      name: pokemon.name,
     });
 
     setIsPokemonFavorited(true);
