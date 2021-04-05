@@ -40,12 +40,12 @@ export default function Pokedex({ pokemons }: FavoritesProps): JSX.Element {
           <Grid>
             {pokemons.length !== 0 &&
               pokemons.map(pokemon => (
-              <Link href={`/pokemon/${String(pokemon.id)}`}>
-                <a>
-                  <GridItemPokemon pokemon={pokemon} />
-                </a>
-              </Link>
-            ))}
+                <Link href={`/pokemon/${String(pokemon.id)}`}>
+                  <a>
+                    <GridItemPokemon pokemon={pokemon} />
+                  </a>
+                </Link>
+              ))}
           </Grid>
         </div>
       </main>

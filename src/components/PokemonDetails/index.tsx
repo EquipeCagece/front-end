@@ -31,6 +31,7 @@ export function PokemonDetails({ pokemon }: PokemonDetailsProps): JSX.Element {
               src={`/types/${type.name}.svg`}
               className={`pokemonIcon ${type.name}`}
               alt={pokemon.name}
+              key={type.name}
             />
           ))}
         </div>
@@ -53,7 +54,7 @@ export function PokemonDetails({ pokemon }: PokemonDetailsProps): JSX.Element {
           <h2>Status base</h2>
 
           {pokemon.stats.map(stat => (
-            <div>
+            <div key={stat.name}>
               <p>
                 {stat.name} - <span>{stat.baseStatus}</span>
               </p>
@@ -63,11 +64,14 @@ export function PokemonDetails({ pokemon }: PokemonDetailsProps): JSX.Element {
         <div className={styles.abilities}>
           <h2>Habilidades</h2>
 
-          {pokemon.abilities.map((ability, index) => (
-            <p>
-              <span>{index + 1}.</span> {ability.name}
-            </p>
-          ))}
+          {pokemon.abilities.map((ability, index) => {
+            const key = index;
+            return (
+              <p key={key}>
+                <span>{index + 1}.</span> {ability.name}
+              </p>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
+import Head from 'next/head';
+import Link from 'next/link';
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 import { BsHeart, BsPlusCircleFill, BsHeartFill } from 'react-icons/bs';
 
-import { GetServerSideProps } from 'next';
-import Link from 'next/link';
 import { PokemonTypeColors } from '../../../styles/globals';
 import styles from './pokemon.module.scss';
 import { PokemonDetails } from '../../../components/PokemonDetails';
 import { PokemonEvolutionCard } from '../../../components/PokemonEvolutionCard';
+import { AddToTeamModal } from '../../../components/AddToTeamModal';
 import api from '../../../services/api';
 
 interface PokemonProps {
@@ -62,6 +64,7 @@ export default function Pokemon({
   const router = useRouter();
   const [tabPokemon, setTabPokemon] = useState('details');
   const [isPokemonFavorited, setIsPokemonFavorited] = useState(!!isFavorited);
+  const [isNewAddPokemonModalOpen, setIsNewTeamModalOpen] = useState(false);
 
   useEffect(() => {
     setTabPokemon('details');
@@ -75,6 +78,14 @@ export default function Pokemon({
 
     return backgroundColor;
   });
+
+  function handleModalOpen(): void {
+    setIsNewTeamModalOpen(true);
+  }
+
+  function handleModalClose(): void {
+    setIsNewTeamModalOpen(false);
+  }
 
   async function handleFavoritePokemon(): Promise<void> {
     await api.post(`favorites/create`, {
@@ -97,12 +108,17 @@ export default function Pokemon({
       </Head>
 
       <main className={styles.container}>
+        <AddToTeamModal
+          isOpen={isNewAddPokemonModalOpen}
+          onRequestClose={handleModalClose}
+          pokemonId={pokemon.id}
+        />
         <div className={styles.content}>
           <nav>
             <button onClick={() => router.back()} type="button">
               <FiArrowLeft color="#3d3d3d" size={50} />
             </button>
-            <button onClick={() => router.back()} type="button">
+            <button onClick={handleModalOpen} type="button">
               <BsPlusCircleFill color="#3498db" size={50} />
             </button>
             {isPokemonFavorited ? (
