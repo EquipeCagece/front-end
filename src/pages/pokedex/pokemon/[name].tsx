@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
-import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
+import { IoMdArrowDropright } from 'react-icons/io';
 import { BsHeart, BsPlusCircleFill, BsHeartFill } from 'react-icons/bs';
 
 import { PokemonTypeColors } from '../../../styles/globals';
@@ -187,7 +188,7 @@ export default function Pokemon({
                       />
                     </a>
                   </Link>
-                  <FiArrowRight size={25} />
+                  <IoMdArrowDropright size={25} />
                 </div>
                 {evolutions.pokemonFirstEvolution && (
                   <div>
@@ -202,7 +203,7 @@ export default function Pokemon({
                         />
                       </a>
                     </Link>
-                    <FiArrowRight size={25} />
+                    <IoMdArrowDropright size={25} />
                   </div>
                 )}
                 {evolutions.pokemonSecondEvolution && (
@@ -218,7 +219,7 @@ export default function Pokemon({
                         />
                       </a>
                     </Link>
-                    <FiArrowRight size={25} />
+                    <IoMdArrowDropright size={25} />
                   </div>
                 )}
               </section>

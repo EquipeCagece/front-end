@@ -1,5 +1,12 @@
 import { GetServerSideProps } from 'next';
+
 import { FiTrash2 } from 'react-icons/fi';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import api from '../../../services/api';
 import styles from './team.module.scss';
 
@@ -14,12 +21,49 @@ interface ProfileTeam {
       type2: string | null;
     }>;
   };
+  typeWeakResist: {
+    allWeaknesses: string[];
+    allResistence: string[];
+  };
 }
 
-export default function Team({ team }: ProfileTeam): JSX.Element {
+export default function Team({
+  team,
+  typeWeakResist,
+}: ProfileTeam): JSX.Element {
+  const [allweakness, setAllWeakness] = useState<string[]>(() => {
+    const setWeakness = new Set<string>();
+
+    typeWeakResist.allWeaknesses.forEach(weakness => {
+      setWeakness.add(weakness);
+    });
+
+    const weaknessFormatted = [];
+
+    setWeakness.forEach(v => weaknessFormatted.push(v));
+
+    return weaknessFormatted;
+  });
+  const [allResistence, setAllResistence] = useState<string[]>(() => {
+    const setResistence = new Set<string>();
+
+    typeWeakResist.allResistence.forEach(resistence => {
+      setResistence.add(resistence);
+    });
+    const resistenceFormatted = [];
+
+    setResistence.forEach(v => resistenceFormatted.push(v));
+
+    return resistenceFormatted;
+  });
+
   return (
     <>
+      <Head>
+        <title>PokeTeam | {team.name}</title>
+      </Head>
       <div className={styles.container}>
+        <ToastContainer />
         <main className={styles.content}>
           <div className={styles.pokemons}>
             <h1>{team.name}</h1>
@@ -27,12 +71,9 @@ export default function Team({ team }: ProfileTeam): JSX.Element {
             <section>
               <h2>Pokemons</h2>
 
-              {team.pokemons.length !== 0 &&
-                team.pokemons.map(pokemon => (
-                  <div>
-                    <button type="button">
-                      <FiTrash2 size={24} color="#ff6b6b" />
-                    </button>
+              {team.pokemons?.length !== 0 &&
+                team.pokemons?.map(pokemon => (
+                  <div key={pokemon.id}>
                     <strong>{pokemon.name}</strong>
                     <p>
                       <img
@@ -56,12 +97,32 @@ export default function Team({ team }: ProfileTeam): JSX.Element {
           <div className={styles.stats}>
             <section>
               <h2>Fraqueza</h2>
-              <div />
+              <div>
+                {allweakness.map(weakness => (
+                  <p key={weakness}>
+                    <img
+                      src={`../../types/${weakness}.svg`}
+                      className={`pokemonIcon ${weakness}`}
+                      alt={weakness}
+                    />
+                  </p>
+                ))}
+              </div>
             </section>
 
             <section>
               <h2>Resistência</h2>
-              <div />
+              <div>
+                {allResistence.map(resistence => (
+                  <p>
+                    <img
+                      src={`../../types/${resistence}.svg`}
+                      className={`pokemonIcon ${resistence}`}
+                      alt={resistence}
+                    />
+                  </p>
+                ))}
+              </div>
             </section>
           </div>
         </main>
@@ -84,7 +145,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      team: response.data ?? [],
+      team: response.data.team ?? [],
+      typeWeakResist: response.data.typeWeakResist,
     },
   };
 };

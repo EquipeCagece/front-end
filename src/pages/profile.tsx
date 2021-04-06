@@ -1,4 +1,4 @@
-import { useRef, ChangeEvent } from 'react';
+import { useRef, ChangeEvent, useState, useEffect } from 'react';
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -42,7 +42,6 @@ interface ProfileProps {
 
 export default function Profile({ user }: ProfileProps): JSX.Element {
   const formRef = useRef<FormHandles>(null);
-  const { replace } = useRouter();
 
   const { updateUser } = useAuth();
 
@@ -160,8 +159,6 @@ export default function Profile({ user }: ProfileProps): JSX.Element {
           }
         );
       });
-
-      replace('/profile');
     }
   }
 

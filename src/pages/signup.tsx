@@ -56,33 +56,25 @@ export default function SignUp(): JSX.Element {
       await api.post('/users', data);
 
       push('/');
-      
-      toast.success('Cadastro realizado. Você já pode fazer seu logon na PokeTeam.', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      
+
+      toast.success(
+        'Cadastro realizado. Você já pode fazer seu logon na PokeTeam.',
+        {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
 
         formRef.current?.setErrors(errors);
       }
-
-      toast.error('Erro no Cadastro. Ocorreu um erro ao fazer o cadastro, tente novamente.', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     }
   }
 

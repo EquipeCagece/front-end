@@ -37,7 +37,7 @@ export function AddToTeamModal({
         team_id,
       });
 
-      router.push(`/team/teams/${team_id}`);
+      router.push(`/teams/team/${team_id}`);
 
       toast.success('Pokemon adicionado ao time com sucesso!', {
         position: 'top-right',

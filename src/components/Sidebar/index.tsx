@@ -1,8 +1,19 @@
-import { FiPower, FiUser, FiSearch, FiPlusCircle, FiHeart } from 'react-icons/fi';
+import {
+  FiPower,
+  FiUser,
+  FiSearch,
+  FiPlusCircle,
+  FiHeart,
+} from 'react-icons/fi';
+
+import { useAuth } from '../../hooks/useAuth';
+
 import styles from './styles.module.scss';
 import { ActiveLink } from '../ActiveLink';
 
 export function SideBar(): JSX.Element {
+  const { signOut } = useAuth();
+
   return (
     <aside className={styles.container}>
       <nav>
@@ -29,7 +40,7 @@ export function SideBar(): JSX.Element {
       </nav>
 
       <footer className={styles.signOut}>
-        <button type="button">
+        <button onClick={signOut} type="button">
           <FiPower size={35} />
         </button>
       </footer>

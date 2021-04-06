@@ -23,12 +23,12 @@
   div.pokemons {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    width: 50%;
 
     background: var(--black-op-700);
 
     & + div {
-      margin-left: 8rem;
+      margin-left: 4rem;
     }
 
     section {
@@ -42,7 +42,7 @@
 
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
 
         transition: all 0.3s;
 
@@ -77,7 +77,7 @@
   }
 
   div.stats {
-    flex: 1;
+    width: 50%;
     display: flex;
     justify-content: space-between;
 
@@ -89,6 +89,19 @@
       align-items: center;
       flex-direction: column;
       background: var(--blue-dark);
+
+      div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 2rem;
+        grid-row-gap: 2rem;
+
+        p {
+          & + p {
+            margin-top: 0.3rem;
+          }
+        }
+      }
 
       & + section {
         margin-left: 2rem;
